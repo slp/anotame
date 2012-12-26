@@ -4,13 +4,13 @@ Anotame - Simple task list for Google App Engine
 * About
 
 Anotame is a task list application, composed by an App Engine backend
-(easily portable to any other framework) and a simple web interface.
+and a simple web interface.
 
 
 * Using it
 
-Please refer to Google App Engine documentation to learn about how to
-test and use this software: https://developers.google.com/appengine/
+To learn about how to test and use this software, please refer to
+Google App Engine docs (https://developers.google.com/appengine/)
 
 
 * Acknowledgements
@@ -18,6 +18,12 @@ test and use this software: https://developers.google.com/appengine/
 Anotame is inspired by TodoMVC (http://addyosmani.github.com/todomvc/)
 
 This project includes code from jQuery and jQuery UI.
+
+
+* Author
+
+This software, except parts coming from projects listed above, has
+been developed by Sergio Lopez (http://twitter.com/slpzp)
 
 
 * License
