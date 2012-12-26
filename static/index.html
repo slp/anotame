@@ -1,0 +1,76 @@
+<!doctype html>
+ 
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>anotame.es - Tu lista de tareas en la nube</title>
+    <link rel="stylesheet" href="res/rmeapp.css" />
+    <link rel="stylesheet" href="res/jquery-ui.css" />
+    <script src="res/jquery-1.8.3.min.js"></script>
+    <script src="res/jquery.ui.core.js"></script>
+    <script src="res/jquery.ui.widget.js"></script>
+    <script src="res/jquery.ui.position.js"></script>
+    <script src="res/jquery.ui.button.js"></script>
+    <script src="res/jquery.ui.menu.js"></script>
+    <script src="res/jquery.ui.popup.js"></script>
+    <script src="res/jquery.ui.tabs.js"></script>
+    <script src="res/jquery.cookie.js"></script>
+    <script src="res/handlebars-1.0.rc.1.js"></script>
+    <script src="res/rmeapp.js"></script>
+  </head>
+  <body>
+    <section id="rmeapp">
+      <header id="header">
+        <img id="logo" src="res/rmelogo.png">
+      </header>
+      <div id="tabs">
+        <ul id="tabs-header"></ul>
+        <input id="new-todo" placeholder="Añadir nueva tarea..." autofocus>
+        <div id="tab-list"></div>
+      </div>
+      <div id="logout">
+      </div>
+      <button id="clear-completed">Eliminar tareas completadas</button>
+    </section>
+    <footer id="info">
+      <p>anotame.es (v0.12) - Creado por <a href="http://twitter.com/slpzp">Sergio López</a></p>
+      <p>Inspirado en <a href="http://todomvc.com">TodoMVC</a>, de Addy Osmani y Sindre Sorhus</p>
+    </footer>
+    <script id="todo-template" type="text/x-handlebars-template">
+      {{#this}}
+      <li {{#if completed}}class="completed"{{/if}} data-id="{{taskid}}">
+	<div class="view">
+          <button class="rmebutton" id="btn-{{taskid}}"></button>
+	  <ul>
+	    <li><a href="#">Prio. Máxima</a></li>
+	    <li><a href="#">Prio. Media</a></li>
+	    <li><a href="#">Prio. Baja</a></li>
+            <li><a href="#">Sin prioridad</a></li>
+	    <li><a href="#">Completado</a></li>
+	  </ul>
+	  <label>{{taskname}}</label>
+	  <button class="destroy"></button>
+	</div>
+	<input class="edit" value="{{taskname}}">
+      </li>
+      {{/this}}
+    </script>
+    <script id="tab-template" type="text/x-handlebars-template">
+      {{#this}}
+      <div id={{tab-id}}>
+        <ul id={{tab-id}}-list class="todo-list">{{{entries}}}</ul>
+      </div>
+      {{/this}}
+    </script>
+    <script id="tabs-header-template" type="text/x-handlebars-template">
+      {{#this}}
+      <li><a href=#{{tab-id}}>{{tab-name}}</a></li>
+      {{/this}}
+    </script>
+    <script id="logout-template" type="text/x-handlebars-template">
+      {{#this}}
+      <p>Registrado como {{nickname}} (<a href={{logout_url}}>salir</a>)</p>
+      {{/this}}
+    </script>
+  </body>
+</html>

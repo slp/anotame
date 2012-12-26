@@ -1,0 +1,26 @@
+Anotame - Simple task list for Google App Engine
+================================================
+
+* About
+
+Anotame is a task list application, composed by an App Engine backend
+(easily portable to any other framework) and a simple web interface.
+
+
+* Using it
+
+Please refer to Google App Engine documentation to learn about how to
+test and use this software: https://developers.google.com/appengine/
+
+
+* Acknowledgements
+
+Anotame is inspired by TodoMVC (http://addyosmani.github.com/todomvc/)
+
+This project includes code from jQuery and jQuery UI.
+
+
+* License
+
+Anotame is distributed under GNU Affero General Public License version
+3. You can find a copy of this license in the file COPYING.

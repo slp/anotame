@@ -1,0 +1,21 @@
+application: anotamees
+version: 1
+runtime: python27
+api_version: 1
+threadsafe: true
+
+handlers:
+- url: /res
+  static_dir: res
+
+- url: /
+  static_files: static/index.html
+  upload: static/index.html
+
+- url: /favicon.ico
+  static_files: res/favicon.ico
+  upload: res/favicon.ico
+
+- url: /task/.*
+  script: anotame.app
+
