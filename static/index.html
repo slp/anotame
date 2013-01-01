@@ -49,7 +49,26 @@
 	    <li><a href="#">Completado</a></li>
 	  </ul>
 	  <label>{{taskname}}</label>
-	  <button class="destroy"></button>
+	  <button id="destroyButton" class="destroy"></button>
+	</div>
+	<input class="edit" value="{{taskname}}">
+      </li>
+      {{/this}}
+    </script>
+    <script id="todo-template-mobile" type="text/x-handlebars-template">
+      {{#this}}
+      <li {{#if completed}}class="completed"{{/if}} data-id="{{taskid}}">
+	<div class="view">
+          <button class="rmebutton" id="btn-{{taskid}}"></button>
+	  <ul>
+	    <li><a href="#">Prio. Máxima</a></li>
+	    <li><a href="#">Prio. Media</a></li>
+	    <li><a href="#">Prio. Baja</a></li>
+            <li><a href="#">Sin prioridad</a></li>
+	    <li><a href="#">Completado</a></li>
+	  </ul>
+	  <label>{{taskname}}</label>
+	  <button class="destroy-mobile"></button>
 	</div>
 	<input class="edit" value="{{taskname}}">
       </li>

@@ -226,11 +226,35 @@ body {
     transition: all 0.2s;
 }
 
+.todo-list li .destroy-mobile {
+    display: block;
+    background: transparent;
+    border: none;
+    position: absolute;
+    top: 0;
+    right: -8px;
+    bottom: 0;
+    width: 40px;
+    height: 40px;
+    margin: auto 0;
+    font-size: 18px;
+    color: #cdcdcd;
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -ms-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    transition: all 0.2s;
+}
+
 .todo-list li .destroy:hover {
     display: block;
 }
 
 .todo-list li .destroy:after {
+	content: '✖';
+}
+
+.todo-list li .destroy-mobile:after {
 	content: '✖';
 }
 

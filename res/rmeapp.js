@@ -12,7 +12,7 @@ jQuery(function( $ ) {
                 alert("Lo siento, tu navegador no está soportado. Por favor, prueba con Chrome, Firefox, Safari, o Internet Explorer en versión 9 o superior");
                 window.location.href = "http://google.com";
             }
-                
+
 	    this.ENTER_KEY = 13;
             this.nickname = "You don't exist";
             this.logout_url = "http://reddit.com";
@@ -30,7 +30,12 @@ jQuery(function( $ ) {
 	    this.render();
 	},
 	cacheElements: function() {
-	    this.todoTemplate = Handlebars.compile( $('#todo-template').html() );
+            if ((/Android|webOS|iPhone|iPad|iPod|BlackBerry/).test(navigator.userAgent)) {
+                this.todoTemplate = Handlebars.compile( $('#todo-template-mobile').html() );
+            }
+            else {
+	        this.todoTemplate = Handlebars.compile( $('#todo-template').html() );
+            }
             this.tabTemplate = Handlebars.compile( $('#tab-template').html() );
             this.tabsHeaderTemplate = Handlebars.compile( $('#tabs-header-template').html() );
             this.logoutTemplate = Handlebars.compile( $('#logout-template').html() );
@@ -121,6 +126,7 @@ jQuery(function( $ ) {
 		list.on( 'keypress', '.edit', this.blurOnEnter );
 		list.on( 'blur', '.edit', this.update );
 		list.on( 'click', '.destroy', this.destroy );
+                list.on( 'click', '.destroy-mobile', this.destroy );
             }
 
             for (var j = 0; j < this.taskList.length; j++) {
