@@ -58,6 +58,8 @@ class TaskGetAll(webapp2.RequestHandler):
                 
             clear = False
             if (user_db.clear_completed):
+                user_db.clear_completed = False
+                user_db.put()
                 clear = True
 
             taskList = [ ]
