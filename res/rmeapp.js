@@ -5,7 +5,7 @@ jQuery(function( $ ) {
 	// https://gist.github.com/1308368
         uuid: function(a,b){for(b=a='';a++<36;b+=a*51&52?(a^15?8^Math.random()*(a^20?16:4):4).toString(16):'-');return b},
         // http://stackoverflow.com/questions/1500260/detect-urls-in-text-with-javascript
-        urlify: function(text){var urlRegex=/(https?:\/\/[^\s]+)/g;return text.replace(urlRegex,function(url){return '<a href="'+ url+'">'+url+'</a>';})},
+        urlify: function(text){var urlRegex=/(https?:\/\/[^\s]+)/g;return text.replace(urlRegex,function(url){return '<a class="todo-a" href="'+ url+'">'+url+'</a>';})},
     };
 
     var App = {
@@ -106,14 +106,16 @@ jQuery(function( $ ) {
                 for (var j = 0; j < this.taskList.length; j++) {
                     var t = this.taskList[sortable[j][2]];
                     if (t["category"] === this.staticTabs[i]["tab-id"]) {
+                        var task = { };
+                        task["taskid"] = t["taskid"];
+                        task["taskname"] = Utils.urlify(t["taskname"]);
                         if (t["priority"] == 50) {
-                            t["completed"] = 1;
+                            task["completed"] = 1;
                         }
                         else {
-                            t["completed"] = 0;
+                            task["completed"] = 0;
                         }
-                        t["taskname"] = Utils.urlify(t["taskname"]);
-                        entries_html += this.todoTemplate( t );
+                        entries_html += this.todoTemplate( task );
                     }
                 }
                 tabList_html += this.tabTemplate([{"tab-id": this.staticTabs[i]["tab-id"], "entries": entries_html}]);
@@ -220,6 +222,17 @@ jQuery(function( $ ) {
 	    $input.val('');
 	},
 	edit: function() {
+            var tid = $(this).closest('li').data('id');
+            var t = { }
+            for (var i = 0; i < App.taskList.length; i++) {
+                if (App.taskList[i].taskid == tid) {
+                    t = App.taskList[i];
+                    break;
+                }
+            }
+            
+            $(this).closest('label').html(t["taskname"]);
+            $(this).closest('li').find('.edit').val(t["taskname"]);
 	    $(this).closest('li').addClass('editing').find('.edit').focus();
 	},
 	blurOnEnter: function( e ) {

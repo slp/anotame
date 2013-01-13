@@ -127,6 +127,10 @@ body {
 	list-style: none;
 }
 
+.todo-a {
+    color: #3E7EB1 !important;
+}
+
 .todo-list li {
 	position: relative;
         margin-right: 10px;
