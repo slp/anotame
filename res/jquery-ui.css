@@ -244,7 +244,7 @@ body .ui-tooltip { border-width: 2px; }
 .ui-widget .ui-widget { font-size: 1em; }
 .ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button { font-family: Verdana,Arial,sans-serif/*{ffDefault}*/; font-size: 1em; }
 .ui-widget-content { border: 1px solid #aaaaaa/*{borderColorContent}*/; background: #ffffff /*{bgImgUrlContent}*/ 50%/*{bgContentXPos}*/ 50%/*{bgContentYPos}*/ repeat-x/*{bgContentRepeat}*/; color: #222222/*{fcContent}*/; }
-.ui-widget-content a { color: #222222/*{fcContent}*/; }
+.ui-widget-content a { color: #3E7EB1/*{fcContent}*/; }
 .ui-widget-header { border: 1px solid #aaaaaa/*{borderColorHeader}*/; background: #cccccc/*{bgImgUrlHeader}*/ 50%/*{bgHeaderXPos}*/ 50%/*{bgHeaderYPos}*/ repeat-x/*{bgHeaderRepeat}*/; color: #222222/*{fcHeader}*/; font-weight: bold; }
 .ui-widget-header a { color: #222222/*{fcHeader}*/; }
 

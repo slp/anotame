@@ -3,7 +3,9 @@ jQuery(function( $ ) {
 
     var Utils = {
 	// https://gist.github.com/1308368
-	uuid: function(a,b){for(b=a='';a++<36;b+=a*51&52?(a^15?8^Math.random()*(a^20?16:4):4).toString(16):'-');return b},
+        uuid: function(a,b){for(b=a='';a++<36;b+=a*51&52?(a^15?8^Math.random()*(a^20?16:4):4).toString(16):'-');return b},
+        // http://stackoverflow.com/questions/1500260/detect-urls-in-text-with-javascript
+        urlify: function(text){var urlRegex=/(https?:\/\/[^\s]+)/g;return text.replace(urlRegex,function(url){return '<a href="'+ url+'">'+url+'</a>';})},
     };
 
     var App = {
@@ -110,6 +112,7 @@ jQuery(function( $ ) {
                         else {
                             t["completed"] = 0;
                         }
+                        t["taskname"] = Utils.urlify(t["taskname"]);
                         entries_html += this.todoTemplate( t );
                     }
                 }
