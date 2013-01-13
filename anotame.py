@@ -56,12 +56,6 @@ class TaskGetAll(webapp2.RequestHandler):
                 task_db.put()
                 
                 
-            clear = False
-            if (user_db.clear_completed):
-                user_db.clear_completed = False
-                user_db.put()
-                clear = True
-
             taskList = [ ]
             faketask = {'taskid': 'nickname', 'taskname': user_session.nickname(), 'category': users.create_logout_url('/')}
             taskList.append(faketask)
@@ -69,14 +63,11 @@ class TaskGetAll(webapp2.RequestHandler):
             tasks = Tasks.all()
             tasks.ancestor(user_key)
             for task in tasks:
-                if clear and task.priority == 50:
-                    db.delete(task.key())
-                else:
-                    t = {'taskid': task.key().name(),
-                         'taskname': task.name,
-                         'category': task.category,
-                         'priority': task.priority}
-                    taskList.append(t)
+                t = {'taskid': task.key().name(),
+                     'taskname': task.name,
+                     'category': task.category,
+                     'priority': task.priority}
+                taskList.append(t)
 
             self.response.headers['Content-Type'] = 'text/json'
             self.response.out.write(json.dumps(taskList))
@@ -242,8 +233,11 @@ class TaskClearCompleted(webapp2.RequestHandler):
             user_key = db.Key.from_path('Users', user_session.user_id())
             user_db = db.get(user_key)
             if user_db:
-                user_db.clear_completed = True
-                user_db.put()
+                tasks = Tasks.all()
+                tasks.ancestor(user_key)
+                for task in tasks:
+                    if task.priority == 50:
+                        db.delete(task.key())
 
                 self.response.headers['Content-Type'] = 'text/plain'
                 self.response.out.write('OK')
